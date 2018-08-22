@@ -1,6 +1,6 @@
 // IMPORTING THE ORM
 // ==================================================================
-var orm = require("../config/orm");
+var orm = require("../config/orm.js");
 
 // FUNCTION THAT WILL INTERACT WITH DATABASE
 // ==================================================================
