@@ -1,6 +1,6 @@
 // IMPORT MYSQL CONNECTION
 // ==================================================================
-var connection = require("./connection.js")
+var connection = require("../config/connection.js")
 
 // FUNCTIONS TO HELP WITH SQL SYNTAX
 // ==================================================================
