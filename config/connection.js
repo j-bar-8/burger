@@ -1,3 +1,5 @@
+// SETUP MYSQL CONNECTION
+// ===============================================================
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -8,6 +10,8 @@ var connection = mysql.createConnection({
     database: "burgers_db"
 });
 
+// MAKE CONNECTION
+// ===============================================================
 connection.connect((err) => {
     if (err) {
         console.error("error connecting: " + err.stack);
@@ -16,4 +20,6 @@ connection.connect((err) => {
     console.log("connected as id " + connection.threadId);
 });
 
+// EXPORT CONNECTION
+// ===============================================================
 module.exports = connection;

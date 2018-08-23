@@ -7,7 +7,7 @@
 
     var app = express();
 
-// SERVER STATIC CONTENT
+// SERVE STATIC CONTENT
 // ==================================================================
 app.use(express.static("public"));
 

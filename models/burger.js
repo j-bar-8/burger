@@ -19,6 +19,11 @@ var burger = {
         orm.updateOne("burgers", objColVals, condition, (result) => {
             cb(result);
         });
+    },
+    deleteOne: (condition, cb) => {
+        orm.deleteOne("burgers", condition, (result) => {
+            cb(result);
+        });
     }
 };
 

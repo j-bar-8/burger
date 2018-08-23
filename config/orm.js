@@ -44,18 +44,18 @@ var orm = {
         });
     },
     insertOne: (table, cols, vals, cb) => {
-        var quertyString = "INSERT INTO " + table;
+        var queryString = "INSERT INTO " + table;
 
-        quertyString += " (";
-        quertyString += cols.toString();
-        quertyString += ") ";
-        quertyString += "VALUES (";
-        quertyString += printQuestionMarks(vals.length);
-        quertyString += ") ";
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
 
-        console.log(quertyString);
+        console.log(queryString);
 
-        connection.query(quertyString, vals, (err, result) => {
+        connection.query(queryString, vals, (err, result) => {
             if (err) {
                 throw err;
             }
@@ -81,9 +81,23 @@ var orm = {
             cb(result);
         });
         
+    },
+    deleteOne: (table, condition, cb) => {
+        var queryString = "DELETE FROM " + table;
+
+        queryString += " WHERE";
+        queryString += condition;
+
+        connection.query(queryString, (err, result) => {
+            if(err) {
+                throw err;
+            }
+            
+            cb(result);
+        });
     }
 
-}
+};
 
 // EXPORT THE ORM OBJECT FOR THE MODEL
 // ==================================================================
