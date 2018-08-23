@@ -1,36 +1,32 @@
-// DEPENDENCIES AND EXPRESS
-// ==================================================================
-    var express= require("express");
-    var bodyParser = require("body-parser");
-    
-    var PORT = process.env.PORT || 8080;
+var express = require("express");
+var bodyParser = require("body-parser");
 
-    var app = express();
+var PORT = process.env.PORT || 8080;
 
-// SERVE STATIC CONTENT
-// ==================================================================
+var app = express();
+
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
-// PARSE APPLICATION/X-WWW-FORM-URLENCODED & JSON
-// ==================================================================
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
 app.use(bodyParser.json());
 
-// HANDLEBARS
-// ==================================================================
+// Set Handlebars.
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// IMPORT AND ACCESS ROUTES
-// ==================================================================
+// Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
 
-// START SERVER
-// ==================================================================
-app.listen(PORT, () => {
-    console.log("App listening on PORT: " + PORT);
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
